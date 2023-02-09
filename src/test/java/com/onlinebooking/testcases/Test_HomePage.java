@@ -41,5 +41,17 @@ public class Test_HomePage extends BaseClass {
 		Assert.assertTrue(true);
 	}
 	
+	@Test
+	public void demoTest2() {
+		
+		int x = 2;
+		if(x == 4) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertTrue(false);
+		}
+		
+	}
+	
 
 }
