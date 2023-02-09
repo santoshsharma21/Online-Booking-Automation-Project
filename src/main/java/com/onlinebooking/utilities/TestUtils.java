@@ -19,23 +19,28 @@ import org.openqa.selenium.WebDriver;
 public class TestUtils {
 
 	public static String captureScreen(WebDriver driver, String filename) {
-		
+
 		String dateTime = new SimpleDateFormat("dd.MM.yyyy_hh.mm.ss").format(new Date());
 		String imgFileName = filename + "_" + dateTime + ".png";
-		
+
 		TakesScreenshot tscr = (TakesScreenshot) driver;
 		File imgSource = tscr.getScreenshotAs(OutputType.FILE);
 		String imgDestination = System.getProperty("user.dir") + "/screenshots/" + imgFileName;
-		
+
 		try {
-			
+
 			FileUtils.copyFile(imgSource, new File(imgDestination));
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// path for jenkins
+		String imgPathJenkins = "http://localhost:8080/job/online-booking-maven-project/ws/screenshots/" + imgFileName;
+
+		// return imgDestination;
 		
-		return imgDestination;
+		return imgPathJenkins;
 	}
 
 }
